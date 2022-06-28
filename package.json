@@ -1,11 +1,11 @@
 {
-    "name": "keycloakify-demo-app",
+    "name": "sonarr",
     "homepage": "https://demo-app.keycloakify.dev",
     "version": "0.4.3",
-    "description": "A demo project for keycloakify",
+    "description": "A keycloakify theme for Sonarr",
     "repository": {
         "type": "git",
-        "url": "git://github.com/garronej/keycloakify-demo-app.git"
+        "url": "git://github.com/Elegant996/sonarr-keycloak-theme.git"
     },
     "scripts": {
         "build": "react-scripts build",
