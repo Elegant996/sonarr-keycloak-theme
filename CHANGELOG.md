@@ -1,3 +1,8 @@
+### **0.4.4** (2022-06-28)  
+  
+- Updated version  
+- Swapped login for index    
+  
 ### **0.4.3** (2022-06-19)  
   
 - Update Keycloakify  
