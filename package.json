@@ -1,7 +1,7 @@
 {
     "name": "sonarr",
     "homepage": "https://demo-app.keycloakify.dev",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "description": "A keycloakify theme for Sonarr",
     "repository": {
         "type": "git",
