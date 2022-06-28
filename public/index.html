@@ -47,37 +47,246 @@
       content="%PUBLIC_URL%/Content/Images/Icons/browserconfig.xml"
     />
 
-    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/Content/Fonts/fonts.css">
-    <!-- webpack bundles head -->
+    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/Content/styles.css" />
+    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/Content/Fonts/fonts.css" />
 
-    <title>Sonarr</title>
+    <title>Login - Sonarr</title>
 
-    <!--
-      The super basic styling for .root  will live here,
-      saves fighting with CSS Modules for ~10 lines
-    -->
     <style>
-      .root {
-        overflow: hidden;
-        height: 100%; /* needed for proper layout */
+      body {
+        background-color: #f5f7fa;
+        color: #656565;
+        font-family: "Roboto", "open sans", "Helvetica Neue", Helvetica, Arial,
+          sans-serif;
       }
 
-      @media only screen and (max-width: 768px) {
-        .root {
-          display: flex;
-          flex-direction: column;
-          min-height: 100%;
-          height: auto;
+      .center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .content {
+        flex: 0 0 325px;
+      }
+
+      .logo {
+        width: 32px;
+        height: 32px;
+      }
+
+      .panel {
+        margin-top: 50px;
+        border-radius: 4px;
+      }
+
+      .panel-header {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        background-color: #3a3f51;
+      }
+
+      .panel-body {
+        padding: 20px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        background-color: #fff;
+      }
+
+      .sign-in {
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      .form-group {
+        margin: 20px 0;
+      }
+
+      .form-input {
+        box-sizing: border-box;
+        padding: 6px 16px;
+        width: 100%;
+        height: 35px;
+        border: 1px solid #dde6e9;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      }
+
+      .form-input:focus {
+        outline: 0;
+        border-color: #66afe9;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+          0 0 8px rgba(102, 175, 233, 0.6);
+      }
+
+      .button {
+        overflow: hidden;
+        margin-top: 20px;
+        padding: 10px 0;
+        width: 100%;
+        border: 1px solid;
+        border-color: #5899eb;
+        border-radius: 4px;
+        background-color: #5d9cec;
+        color: #fff;
+        vertical-align: middle;
+        text-align: center;
+        white-space: nowrap;
+        line-height: normal;
+      }
+
+      .button:hover {
+        border-color: #3483e7;
+        background-color: #4b91ea;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .copy {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .remember-me-container {
+        display: flex;
+        justify-content: space-between;
+        line-height: 25px;
+      }
+
+      .remember-me {
+        font-size: 14px;
+      }
+
+      .forgot-password {
+        margin-left: auto;
+        color: #909fa7;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      .forgot-password:focus,
+      .forgot-password:hover {
+        color: #748690;
+        text-decoration: underline;
+      }
+
+      .forgot-password:visited {
+        color: #748690;
+      }
+
+      .login-failed {
+        margin-top: 20px;
+        color: #f05050;
+        font-size: 14px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+        .form-input {
+          font-size: 16px;
         }
       }
     </style>
-  <script defer src="%PUBLIC_URL%/vendors.js"></script><script defer src="/index.js"></script><link href="/Content/styles.css" rel="stylesheet"></head>
+  </head>
 
   <body>
-    <div id="portal-root"></div>
-    <div id="root" class="root"></div>
+    <div class="center">
+      <div class="content">
+        <div class="panel">
+          <div class="panel-header">
+            <img src="%PUBLIC_URL%/Content/Images/logo.svg" alt="Image" class="logo" />
+          </div>
+
+          <div class="panel-body">
+            <div class="sign-in">
+              SIGN IN TO CONTINUE
+            </div>
+
+            <form
+              role="form"
+              data-parsley-validate=""
+              novalidate=""
+              class="mb-lg"
+              method="POST"
+            >
+              <div class="form-group">
+                <input
+                  type="email"
+                  name="username"
+                  class="form-input"
+                  placeholder="Username"
+                  autocomplete="off"
+                  pattern=".{1,}"
+                  required
+                  title="User name is required"
+                  autoFocus="true"
+                  autoCapitalize="false"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  class="form-input"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+
+              <div class="remember-me-container">
+                <span class="remember-me">
+                  <input
+                    type="checkbox"
+                    name="rememberMe"
+                    id="rememberMe"
+                    checked="checked"
+                  />
+                  <label for="rememberMe">Remember Me</label>
+                </span>
+
+                <a
+                  href="https://wiki.servarr.com/Sonarr_FAQ#Help_I_have_forgotten_my_password"
+                  class="forgot-password"
+                  >Forgot your password?</a
+                >
+              </div>
+              <button type="submit" class="button">Login</button>
+
+              <div id="login-failed" class="login-failed hidden">
+                Incorrect Username or Password
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="copy" class="copy hidden">
+          <span>&copy;</span>
+          <span id="year"></span>
+          <span>-</span>
+          <span>Sonarr</span>
+        </div>
+      </div>
+    </div>
   </body>
 
-  <script src="%PUBLIC_URL%/initialize.js" data-no-hash></script>
-  <!-- webpack bundles body -->
+  <script type="text/javascript">
+    var yearSpan = document.getElementById("year");
+    yearSpan.innerHTML = "2010-" + new Date().getFullYear();
+
+    var copyDiv = document.getElementById("copy");
+    copyDiv.classList.remove("hidden");
+
+    if (window.location.search.indexOf("loginFailed=true") > -1) {
+      var loginFailedDiv = document.getElementById("login-failed");
+
+      loginFailedDiv.classList.remove("hidden");
+    }
+  </script>
 </html>
